@@ -45,6 +45,7 @@ class ImageInlineProcessor(LinkInlineProcessor):
             if curly:
                 fig[-1].tail = '\n'
                 fig[-1].tail += curly.group()
+                img.tail = curly.group() #set attrs to image as well. This is especially important in combination with the 'image-process' module of pelican, which needs the class attribute at the image
                 # remove original '{: xxx}'
                 index += curly.end()
 

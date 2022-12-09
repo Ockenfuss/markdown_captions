@@ -25,9 +25,11 @@ class ImageInlineProcessor(LinkInlineProcessor):
             return None, None, None
 
         fig = ElementTree.Element('figure')
-        img = ElementTree.SubElement(fig, 'img')
+        hyperlink=ElementTree.SubElement(fig, "a")
+        img = ElementTree.SubElement(hyperlink, 'img')
         cap = ElementTree.SubElement(fig, 'figcaption')
 
+        hyperlink.set('href', src)
         img.set('src', src)
 
         if title is not None:
